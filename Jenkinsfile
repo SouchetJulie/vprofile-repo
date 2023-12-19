@@ -1,10 +1,15 @@
 pipeline {
-    agent any
+    agent {
+      docker {
+        image 'maven:3.9.6-eclipse-temurin-11'
+        args '-v /root/.m2:/root/.m2'
+      }
+    }
 
     stages{
         stage('fetch code') {
           steps{
-              git branch: 'vp-rem', url: "https://github.com/devopshydclub/vprofile-repo.git"
+              git branch: 'vp-rem', url: "https://github.com/souchetjulie/vprofile-repo.git"
           }  
         }
 
@@ -23,13 +28,11 @@ pipeline {
             steps {
                 sh 'mvn test'
             }
-
         }
-         stage('Code Ananlysis'){
+         stage('Code Analysis'){
             steps {
                 sh 'mvn checkstyle:checkstyle'
             }
-
         }
     }
 }
