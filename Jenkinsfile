@@ -41,6 +41,7 @@ pipeline {
                type: 'war'
              ]]
           )
+        }
        }
         /**stage('Test'){
             steps {
