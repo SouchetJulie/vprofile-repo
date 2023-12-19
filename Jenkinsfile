@@ -1,10 +1,15 @@
 pipeline {
-    agent any
+    agent {
+      docker {
+        image 'maven:3.9.6-eclipse-temurin-11'
+        args '-v /root/.m2:/root/.m2'
+      }
+    }
 
     stages{
         stage('fetch code') {
           steps{
-              git branch: 'vp-rem', url: "https://github.com/souchetjulie/vprofile-repo.git"
+              git branch: 'master', url: "https://github.com/souchetjulie/vprofile-repo.git"
           }  
         }
 
