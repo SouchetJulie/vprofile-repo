@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('fetch code') {
       steps {
-        git branch: 'master', url: "https://github.com/souchetjulie/vprofile-repo.git"
+        git branch: 'VP-TEST', url: "https://github.com/souchetjulie/vprofile-repo.git"
       }
     }
 
